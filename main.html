@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <h1>Etch-a-Sketch!</h1>
+        <div id="container"></div>
+
+
+        <script>
+
+            let rows = 16; columns = 16;
+
+            const mainDiv = document.querySelector('#container');
+            for (let i = 0; i < rows; i++) {
+                    const rowDiv = document.createElement('div');
+                    rowDiv.classList.add('rowDiv');
+                    mainDiv.appendChild(rowDiv);
+                for (let j = 0; j < columns; j++) {
+                    const smallDiv = document.createElement('div');
+                    smallDiv.classList.add('smallDiv');
+
+                    function hover() {
+                        console.log('Div was hovered over!');
+                        smallDiv.classList.add('colored');
+                    }
+
+
+                    smallDiv.addEventListener("mouseover", hover);
+
+                    rowDiv.appendChild(smallDiv);
+                }
+            }
+
+
+          
+        </script>
+    </body>
+</html>

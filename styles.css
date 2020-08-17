@@ -1,0 +1,25 @@
+h1 {
+    color: blue;
+    text-align: center;
+}
+
+body {
+  
+}
+
+.rowDiv {
+    display: flex;
+    justify-content: center;
+}
+
+.smallDiv {
+    border: solid 1px black;
+    width: 40px;
+    height: 40px;
+}
+
+.colored {
+    background-color: blue;
+}
+
+
