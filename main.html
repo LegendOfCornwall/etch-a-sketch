@@ -11,40 +11,59 @@
 
         <script>
 
-            let rows = 16; columns = 16;
-
             const mainDiv = document.querySelector('#container');
-            for (let i = 0; i < rows; i++) {
+            let isGridMade = false;
+
+            function makeGrid(rows, columns) {
+                for (let i = 0; i < rows; i++) {
                     const rowDiv = document.createElement('div');
                     rowDiv.classList.add('rowDiv');
                     mainDiv.appendChild(rowDiv);
                 for (let j = 0; j < columns; j++) {
                     const smallDiv = document.createElement('div');
                     smallDiv.classList.add('smallDiv');
-
                     rowDiv.appendChild(smallDiv);
                 }
+                addEventListenersToGrid();
+                isGridMade = true;
+            }}
+
+            function clearGrid() {
+                mainDiv.textContent = '';
+                isGridMade = false;
             }
 
-            const smallDivs = document.querySelectorAll('.smallDiv');
-            smallDivs.forEach((e) => {
-                e.addEventListener("mouseover", () => {
-                    console.log('Div was hovered over!');
-                    e.classList.add('colored');
-                });
-            });
+            function addEventListenersToGrid() {
+                const smallDivs = document.querySelectorAll('.smallDiv');
+                    smallDivs.forEach((e) => {
+                        e.addEventListener("mouseover", () => {
+                            console.log('Div was hovered over!');
+                            e.classList.add('colored');
+                    });
+                 });
+                console.log('Test');
+            }
+
+            makeGrid(16, 16);
+
+
+
 
             const resetBtn = document.querySelector('button');
             resetBtn.addEventListener('click', function(e) {
-                smallDivs.forEach((small) => {
-                    small.classList.remove('colored');
-                });
+                let userResponse = prompt("How many squares on each side? ");
+                if (userResponse != null && Number.isInteger(userResponse)) {
+                    clearGrid();
+                    makeGrid(userResponse, userResponse);
+                    console.log("grid cleared");
+                }
+                clearGrid();
+                makeGrid (userResponse, userResponse);
+
+                
+
             });
 
-
- 
-
-          
         </script>
     </body>
 </html>
