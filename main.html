@@ -5,6 +5,7 @@
     </head>
     <body>
         <h1>Etch-a-Sketch!</h1>
+        <div><button id="reset-button">Reset</button></div>
         <div id="container"></div>
 
 
@@ -21,18 +22,27 @@
                     const smallDiv = document.createElement('div');
                     smallDiv.classList.add('smallDiv');
 
-                    function hover() {
-                        console.log('Div was hovered over!');
-                        smallDiv.classList.add('colored');
-                    }
-
-
-                    smallDiv.addEventListener("mouseover", hover);
-
                     rowDiv.appendChild(smallDiv);
                 }
             }
 
+            const smallDivs = document.querySelectorAll('.smallDiv');
+            smallDivs.forEach((e) => {
+                e.addEventListener("mouseover", () => {
+                    console.log('Div was hovered over!');
+                    e.classList.add('colored');
+                });
+            });
+
+            const resetBtn = document.querySelector('button');
+            resetBtn.addEventListener('click', function(e) {
+                smallDivs.forEach((small) => {
+                    small.classList.remove('colored');
+                });
+            });
+
+
+ 
 
           
         </script>
